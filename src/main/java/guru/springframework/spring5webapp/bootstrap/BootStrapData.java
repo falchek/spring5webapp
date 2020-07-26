@@ -57,8 +57,18 @@ public class BootStrapData implements CommandLineRunner {
                 "15501");
 
         publisherRepository.save(penguin);
-        System.out.println("Number of publishers: " + publisherRepository.count());
 
+        penguin.getBooks().add(ddd);
+        ddd.setPublisher(penguin);
+        bookRepository.save(ddd);
+
+        penguin.getBooks().add(noEjbs);
+        noEjbs.setPublisher(penguin);
+        bookRepository.save(noEjbs);
+
+
+        System.out.println("Number of publishers: " + publisherRepository.count());
+        System.out.println("Publisher number of books: " + penguin.getBooks().size());
 
     }
 }
